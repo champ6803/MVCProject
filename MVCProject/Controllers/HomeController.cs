@@ -5,29 +5,46 @@ using System.Web;
 using System.Web.Mvc;
 using MVCProject.Helper;
 using MVCProject.Models;
+using MVCProject.Entities;
 
 namespace MVCProject.Controllers
 {
     public class HomeController : Controller
     {
+        protected CustomerHelper cusHelp = new CustomerHelper();
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult getCustomerList()
+        public ActionResult GetCustomerList()
         {
             try
             {
-                CustomerHelper cusHelp = new CustomerHelper();
                 var customerList = cusHelp.GetCustomerList();
                 return Json(customerList, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
-                //log.Error(ex.StackTrace);
-                //log.Error(ex.Message);
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult AddCustomer(CustomerModel cus)
+        {
+            try
+            {
+                bool added = cusHelp.AddCustomer(cus);
+                if (added)
+                {
+                    var customerList = cusHelp.GetCustomerList();
+                    return Json(customerList, JsonRequestBehavior.AllowGet);
+                }
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
         }

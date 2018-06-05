@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MVCProject.Models;
 using MVCProject.Entities;
+using System.Data.Entity.Validation;
 
 namespace MVCProject.Libraries
 {
@@ -68,6 +69,29 @@ namespace MVCProject.Libraries
             }
         }
 
+        internal customer Mapping(CustomerModel c)
+        {
+            try
+            {
+                if (c != null)
+                {
+                    return new customer()
+                    {
+                        cus_id = c.cus_id,
+                        cus_name = c.cus_name,
+                        cus_age = c.cus_age,
+                        cus_address = c.cus_address
+                    };
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public IQueryable<customer> IQueryable()
         {
             return dbh.customer;
@@ -88,5 +112,47 @@ namespace MVCProject.Libraries
                 return null;
             }
         }
+
+        public bool AddCustomer(CustomerModel m)
+        {
+            if (m == null)
+                throw new Exception("no object");
+            try
+            {
+
+                if (IQueryable().Where(o => o.cus_name == m.cus_name).ToList().Count == 0)
+                {
+                    customer _obj = Mapping(m);
+                    dbh.customer.Add(_obj);
+                    dbh.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool DeleteCustomer(int cus_id)
+        {
+            try
+            {
+                customer dbCustomer = dbh.customer.FirstOrDefault(o => o.cus_id == cus_id);
+                if (dbCustomer != null)
+                {
+                    dbh.customer.Attach(dbCustomer);
+                    dbh.customer.Remove(dbCustomer);
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

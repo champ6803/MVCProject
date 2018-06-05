@@ -14,5 +14,10 @@ namespace MVCProject.Helper
             List<CustomerModel> list = new CustomerLibrary().GetCustomerList();
             return list;
         }
+
+        public bool AddCustomer(CustomerModel cus)
+        {
+            return new CustomerLibrary().AddCustomer(cus);
+        }
     }
 }
