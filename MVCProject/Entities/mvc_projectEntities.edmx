@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="mvc_projectModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="book_category">
+          <Key>
+            <PropertyRef Name="book_category_id" />
+          </Key>
+          <Property Name="book_category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="book_category_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="book_order">
+          <Key>
+            <PropertyRef Name="book_order_id" />
+          </Key>
+          <Property Name="book_order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cus_id" Type="int" Nullable="false" />
+          <Property Name="book_order_total" Type="float" Nullable="false" />
+          <Property Name="book_order_date" Type="timestamp" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="book_order_detail">
+          <Key>
+            <PropertyRef Name="book_order_detail_id" />
+          </Key>
+          <Property Name="book_order_detail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="book_order_id" Type="int" Nullable="false" />
+          <Property Name="book_product_id" Type="int" Nullable="false" />
+          <Property Name="book_order_detail_price" Type="float" Nullable="false" />
+          <Property Name="book_order_detail_qty" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="book_product">
+          <Key>
+            <PropertyRef Name="book_product_id" />
+          </Key>
+          <Property Name="book_product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="book_type_id" Type="int" Nullable="false" />
+          <Property Name="book_category_id" Type="int" Nullable="false" />
+          <Property Name="book_product_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="book_product_price" Type="float" Nullable="false" />
+          <Property Name="book_product_qty" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="book_type">
+          <Key>
+            <PropertyRef Name="book_type_id" />
+          </Key>
+          <Property Name="book_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="book_type_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="cus_id" />
+          </Key>
+          <Property Name="cus_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cus_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cus_age" Type="int" Nullable="false" />
+          <Property Name="cus_address" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="mvc_projectModelStoreContainer">
+          <EntitySet Name="book_category" EntityType="Self.book_category" Schema="mvc_project" store:Type="Tables" />
+          <EntitySet Name="book_order" EntityType="Self.book_order" Schema="mvc_project" store:Type="Tables" />
+          <EntitySet Name="book_order_detail" EntityType="Self.book_order_detail" Schema="mvc_project" store:Type="Tables" />
+          <EntitySet Name="book_product" EntityType="Self.book_product" Schema="mvc_project" store:Type="Tables" />
+          <EntitySet Name="book_type" EntityType="Self.book_type" Schema="mvc_project" store:Type="Tables" />
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="mvc_project" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mvc_projectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="book_category">
+          <Key>
+            <PropertyRef Name="book_category_id" />
+          </Key>
+          <Property Name="book_category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="book_order">
+          <Key>
+            <PropertyRef Name="book_order_id" />
+          </Key>
+          <Property Name="book_order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cus_id" Type="Int32" Nullable="false" />
+          <Property Name="book_order_total" Type="Single" Nullable="false" />
+          <Property Name="book_order_date" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="book_order_detail">
+          <Key>
+            <PropertyRef Name="book_order_detail_id" />
+          </Key>
+          <Property Name="book_order_detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_order_id" Type="Int32" Nullable="false" />
+          <Property Name="book_product_id" Type="Int32" Nullable="false" />
+          <Property Name="book_order_detail_price" Type="Single" Nullable="false" />
+          <Property Name="book_order_detail_qty" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="book_product">
+          <Key>
+            <PropertyRef Name="book_product_id" />
+          </Key>
+          <Property Name="book_product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_type_id" Type="Int32" Nullable="false" />
+          <Property Name="book_category_id" Type="Int32" Nullable="false" />
+          <Property Name="book_product_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="book_product_price" Type="Single" Nullable="false" />
+          <Property Name="book_product_qty" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="book_type">
+          <Key>
+            <PropertyRef Name="book_type_id" />
+          </Key>
+          <Property Name="book_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="book_type_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="cus_id" />
+          </Key>
+          <Property Name="cus_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cus_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cus_age" Type="Int32" Nullable="false" />
+          <Property Name="cus_address" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="mvc_projectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="book_category" EntityType="Self.book_category" />
+          <EntitySet Name="book_order" EntityType="Self.book_order" />
+          <EntitySet Name="book_order_detail" EntityType="Self.book_order_detail" />
+          <EntitySet Name="book_product" EntityType="Self.book_product" />
+          <EntitySet Name="book_type" EntityType="Self.book_type" />
+          <EntitySet Name="customer" EntityType="Self.customer" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mvc_projectModelStoreContainer" CdmEntityContainer="mvc_projectEntities">
+          <EntitySetMapping Name="book_category">
+            <EntityTypeMapping TypeName="mvc_projectModel.book_category">
+              <MappingFragment StoreEntitySet="book_category">
+                <ScalarProperty Name="book_category_id" ColumnName="book_category_id" />
+                <ScalarProperty Name="book_category_name" ColumnName="book_category_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="book_order">
+            <EntityTypeMapping TypeName="mvc_projectModel.book_order">
+              <MappingFragment StoreEntitySet="book_order">
+                <ScalarProperty Name="book_order_id" ColumnName="book_order_id" />
+                <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+                <ScalarProperty Name="book_order_total" ColumnName="book_order_total" />
+                <ScalarProperty Name="book_order_date" ColumnName="book_order_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="book_order_detail">
+            <EntityTypeMapping TypeName="mvc_projectModel.book_order_detail">
+              <MappingFragment StoreEntitySet="book_order_detail">
+                <ScalarProperty Name="book_order_detail_id" ColumnName="book_order_detail_id" />
+                <ScalarProperty Name="book_order_id" ColumnName="book_order_id" />
+                <ScalarProperty Name="book_product_id" ColumnName="book_product_id" />
+                <ScalarProperty Name="book_order_detail_price" ColumnName="book_order_detail_price" />
+                <ScalarProperty Name="book_order_detail_qty" ColumnName="book_order_detail_qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="book_product">
+            <EntityTypeMapping TypeName="mvc_projectModel.book_product">
+              <MappingFragment StoreEntitySet="book_product">
+                <ScalarProperty Name="book_product_id" ColumnName="book_product_id" />
+                <ScalarProperty Name="book_type_id" ColumnName="book_type_id" />
+                <ScalarProperty Name="book_category_id" ColumnName="book_category_id" />
+                <ScalarProperty Name="book_product_name" ColumnName="book_product_name" />
+                <ScalarProperty Name="book_product_price" ColumnName="book_product_price" />
+                <ScalarProperty Name="book_product_qty" ColumnName="book_product_qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="book_type">
+            <EntityTypeMapping TypeName="mvc_projectModel.book_type">
+              <MappingFragment StoreEntitySet="book_type">
+                <ScalarProperty Name="book_type_id" ColumnName="book_type_id" />
+                <ScalarProperty Name="book_type_name" ColumnName="book_type_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customer">
+            <EntityTypeMapping TypeName="mvc_projectModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+                <ScalarProperty Name="cus_name" ColumnName="cus_name" />
+                <ScalarProperty Name="cus_age" ColumnName="cus_age" />
+                <ScalarProperty Name="cus_address" ColumnName="cus_address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

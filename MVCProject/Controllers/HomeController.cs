@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVCProject.Helper;
+using MVCProject.Models;
 
 namespace MVCProject.Controllers
 {
@@ -13,18 +15,21 @@ namespace MVCProject.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public ActionResult getCustomerList()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            try
+            {
+                CustomerHelper cusHelp = new CustomerHelper();
+                var customerList = cusHelp.GetCustomerList();
+                return Json(customerList, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                //log.Error(ex.StackTrace);
+                //log.Error(ex.Message);
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

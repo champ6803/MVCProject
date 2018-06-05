@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mvc_projectModelStoreContainer" CdmEntityContainer="mvc_projectEntities">
+    <EntitySetMapping Name="book_category">
+      <EntityTypeMapping TypeName="mvc_projectModel.book_category">
+        <MappingFragment StoreEntitySet="book_category">
+          <ScalarProperty Name="book_category_id" ColumnName="book_category_id" />
+          <ScalarProperty Name="book_category_name" ColumnName="book_category_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="book_order">
+      <EntityTypeMapping TypeName="mvc_projectModel.book_order">
+        <MappingFragment StoreEntitySet="book_order">
+          <ScalarProperty Name="book_order_id" ColumnName="book_order_id" />
+          <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+          <ScalarProperty Name="book_order_total" ColumnName="book_order_total" />
+          <ScalarProperty Name="book_order_date" ColumnName="book_order_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="book_order_detail">
+      <EntityTypeMapping TypeName="mvc_projectModel.book_order_detail">
+        <MappingFragment StoreEntitySet="book_order_detail">
+          <ScalarProperty Name="book_order_detail_id" ColumnName="book_order_detail_id" />
+          <ScalarProperty Name="book_order_id" ColumnName="book_order_id" />
+          <ScalarProperty Name="book_product_id" ColumnName="book_product_id" />
+          <ScalarProperty Name="book_order_detail_price" ColumnName="book_order_detail_price" />
+          <ScalarProperty Name="book_order_detail_qty" ColumnName="book_order_detail_qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="book_product">
+      <EntityTypeMapping TypeName="mvc_projectModel.book_product">
+        <MappingFragment StoreEntitySet="book_product">
+          <ScalarProperty Name="book_product_id" ColumnName="book_product_id" />
+          <ScalarProperty Name="book_type_id" ColumnName="book_type_id" />
+          <ScalarProperty Name="book_category_id" ColumnName="book_category_id" />
+          <ScalarProperty Name="book_product_name" ColumnName="book_product_name" />
+          <ScalarProperty Name="book_product_price" ColumnName="book_product_price" />
+          <ScalarProperty Name="book_product_qty" ColumnName="book_product_qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="book_type">
+      <EntityTypeMapping TypeName="mvc_projectModel.book_type">
+        <MappingFragment StoreEntitySet="book_type">
+          <ScalarProperty Name="book_type_id" ColumnName="book_type_id" />
+          <ScalarProperty Name="book_type_name" ColumnName="book_type_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customer">
+      <EntityTypeMapping TypeName="mvc_projectModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+          <ScalarProperty Name="cus_name" ColumnName="cus_name" />
+          <ScalarProperty Name="cus_age" ColumnName="cus_age" />
+          <ScalarProperty Name="cus_address" ColumnName="cus_address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
