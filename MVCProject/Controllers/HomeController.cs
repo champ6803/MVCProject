@@ -31,6 +31,7 @@ namespace MVCProject.Controllers
             }
         }
 
+        [HttpPost]
         public ActionResult AddCustomer(CustomerModel cus)
         {
             try

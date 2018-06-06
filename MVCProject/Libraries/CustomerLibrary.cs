@@ -144,6 +144,7 @@ namespace MVCProject.Libraries
                 {
                     dbh.customer.Attach(dbCustomer);
                     dbh.customer.Remove(dbCustomer);
+                    dbh.SaveChanges();
                     return true;
                 }
                 return false;
