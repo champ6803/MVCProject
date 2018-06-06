@@ -3,14 +3,12 @@
 });
 
 function getCustomer() {
-    var customer = "";
     $.ajax({
         type: 'GET',
         url: base_path + 'Home/GetCustomerList',
         async: false,
         success: function (data) {
             if (data) {
-                customer = data;
                 createTable(data);
             } else {
                 alert('fail');
