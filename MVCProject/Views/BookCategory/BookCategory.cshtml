@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "BookCategory";
+}
+
+<h2 class="text-center">BookCategory</h2>
+<div class="panel panel-default">
+    <div class="panel-heading">Add Book Category</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group row">
+                    <label class="col-xs-2 control-label">Book Category</label>
+                    <div class="col-xs-6">
+                        <input class="form-control" id="book_category_name" />
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <button onclick="addBookCategory()" class="btn btn-primary">Add</button>
+    </div>
+</div>
+
+<h3>รายการหมวดหมู่หนังสือ</h3>
+<div class="row">
+    <div class="col-xs-12">
+        <table width="600"  id="myTableCategory" class="table">
+            <!-- head table -->
+            <thead>
+                <tr>
+                    <th>Book category id</th>
+                    <th>Book categoey name</th>
+                </tr>
+            </thead>
+            <!-- body dynamic rows -->
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script src="@Url.Content("~/js/BookCategory/BookCategory.js")"></script>
+}
