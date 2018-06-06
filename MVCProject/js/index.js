@@ -1,5 +1,6 @@
 ﻿$(function () {
     getCustomer();
+    create_bootstrap_table();
 });
 
 function getCustomer() {
@@ -62,4 +63,9 @@ function addCustomer() {
             }
         });
     }
+}
+
+function create_bootstrap_table()
+{
+    
 }
