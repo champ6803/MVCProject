@@ -18,5 +18,14 @@ namespace MVCProject.Helper
         {
             return new BookCategoryLibrary().AddBookCategory(bookCategory);
         }
+        public bool DeleteBookCategoryList(List<BookCategoryModel> bookCategoryList)
+        {
+            return new BookCategoryLibrary().DeleteBookCategoryList(bookCategoryList);
+        }
+
+        internal object DeleteBookCategoryList()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

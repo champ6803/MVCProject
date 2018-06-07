@@ -116,6 +116,54 @@ namespace MVCProject.Libraries
             {
                 throw ex;
             }
-        }       
+        }
+        public bool DeleteBookCategoryList(List<BookCategoryModel> bookCategoryList)
+        {
+            try
+            {
+                List<book_category> dbBookCategory = Mapping(bookCategoryList);
+                if(dbBookCategory.Count > 0)
+                {
+                    foreach (book_category bookCategory in dbBookCategory)
+                    {
+                        dbh.book_category.Attach(bookCategory);
+                        dbh.book_category.Remove(bookCategory);
+                        dbh.SaveChanges();
+                    }
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private List<book_category> Mapping(List<BookCategoryModel> list)
+        {
+            try
+            {
+                if (list != null && list.Count > 0)
+                {
+                    List<book_category> mList = new List<book_category>();
+
+                    foreach (BookCategoryModel o in list)
+                    {
+                        mList.Add(new book_category()
+                        {
+                            book_category_id = o.book_category_id,
+                            book_category_name = o.book_category_name
+                        });
+                    }
+                    return mList;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

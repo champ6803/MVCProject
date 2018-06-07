@@ -1,30 +1,30 @@
 ﻿$(function () {
-    getBookCategory();
-    create_bootstrap_table();
+    getBookCategory();   
 
-    $('#del').click(function () {
-        //$('#table').bootstrapTable('load', data);
-        var cusSel = $('#table').bootstrapTable('getSelections');
-        alert("button");
+    $('#remove').click(function () {
+        var ids = $('#table').bootstrapTable('getSelections'); 
+        $.each(ids, function (key, val) { 
+            $('#table').bootstrapTable('removeByUniqueId', this.book_caategory_id);  
+        });
+        delelteBookCategory(ids);
     });
 });
 
 function getBookCategory()
 {
-    var book_category = "";
     $.ajax({
         type: 'GET',
         url: base_path + 'BookCategory/GetBookCategoryList',
         async: false,
         success: function (data)
         {
-            if (data)
-            {
-                book_category = data;
-                createTable(data);
+            if (data) {
+                //book_category = data;
+                //createTable(data);
+                initTableBootstrap();
+                $('#table').bootstrapTable('load', data);
             }
-            else
-            {
+            else {
                 alert('fail');
             }
         },
@@ -37,8 +37,7 @@ function getBookCategory()
 
 function createTable(data)
 {
-    if (data)
-    {
+    if (data) {
         $('#myTableCategory > tbody').empty();
         $.each(data, function ()
         {
@@ -69,12 +68,11 @@ function addBookCategory()
             },
             success: function (data)
             {
-                if (data) 
-                {
-                    createTable(data);
+                if (data) {
+                    //createTable(data);
+                    $('#table').bootstrapTable('load', data);
                 }
-                else
-                {
+                else {
                     alert('fail');
                 }
             },
@@ -86,33 +84,47 @@ function addBookCategory()
     }
 }
 
-function create_bootstrap_table(data) {
-    $(function () {
-        $('#table').bootstrapTable({
-            type: 'GET',
-            url: base_path + 'BookCategory/GetBookCategoryList',
-            columns: [{
-                field: 'state',
-                checkbox: true,
-                align: 'center',
-                valign: 'middle'
-            }, {
-                field: 'book_category_id',
-                title: 'id'
-            }, {
-                field: 'book_category_name',
-                title: 'name'
-            }]
+function delelteBookCategory(del)
+{
+    if (del.length > 0) {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: base_path + 'BookCategory/DeleteBookCategory',
+            asyn: false,
+            data: JSON.stringify({ 'bookCategoryList': del }),
+            success: function (data) {
+                if (data) {
+                    $('#table').bootstrapTable('load', data);
+                } else {
+                    alert('false');
+                }
+            },
+            error: function (data) {
+                alert("error");
+            }
         });
+    }
+    else {
+        alert('');
+    }
+}
+
+function initTableBootstrap() {
+    $('#table').bootstrapTable({
+        uniqueId: 'book_category_id',
+        columns: [{
+            field: 'state',
+            checkbox: true,
+            align: 'center',
+            valign: 'middle'
+        }, {
+            field: 'book_category_id',
+            title: 'id'
+        }, {
+            field: 'book_category_name',
+            title: 'name'
+        }]
     });
-
-    $(document).ready(function() {
-        
-         
-    });
-
-   /* $('#table').on('click.bs.table', function (row, $element, field) {
-        alert('Hi');
-    });*/
-
 }

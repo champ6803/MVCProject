@@ -51,6 +51,23 @@ namespace MVCProject.Controllers
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
         }
+        public ActionResult DeleteBookCategory(List<BookCategoryModel> bookCategoryList)
+        {
+            try
+            {
+                bool del = bookCategoryHelp.DeleteBookCategoryList(bookCategoryList);
+                if(del)
+                {
+                    var categoryList = bookCategoryHelp.GetBookCategory();
+                    return Json(true, JsonRequestBehavior.AllowGet);
+                }
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+        }
 
     }
 }
