@@ -11,5 +11,6 @@ namespace MVCProject.Models
         public string cus_name { get; set; }
         public int cus_age { get; set; }
         public string cus_address { get; set; }
+        public bool state { get; set; }
     }
 }

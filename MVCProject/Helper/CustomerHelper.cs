@@ -19,5 +19,10 @@ namespace MVCProject.Helper
         {
             return new CustomerLibrary().AddCustomer(cus);
         }
+
+        public bool DeleteCustomerList(List<CustomerModel> cusList)
+        {
+            return new CustomerLibrary().DeleteCustomerList(cusList);
+        }
     }
 }
