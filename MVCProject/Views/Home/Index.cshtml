@@ -27,12 +27,10 @@
     </div>
 </div>
 
-
 <div class="row" style="padding-top: 50px;">
-    <div class="col-xs-12">
-        <div class="text-center">
-            <p>Show Customer</p>
-            <table class="table" id="myTable">
+    <div class="col-xs-12 text-center">
+        <h3>Show Customer</h3>
+        @*<table class="table" id="myTable">
                 <!-- head table -->
                 <thead>
                     <tr>
@@ -44,13 +42,55 @@
                 </thead>
                 <!-- body dynamic rows -->
                 <tbody></tbody>
-            </table>
-
-            <table id="table"></table>
-        </div>
+            </table>*@
+        <table id="table"></table>
+    </div>
+</div>
+<div class="row"  style="padding-top: 20px;">
+    <div class="col-xs-12">
+        <button class="btn btn-danger" id="remove">Delete</button>
     </div>
 </div>
 
 @section scripts{
+    @*<script>
+            $(function () {
+                $('#table').bootstrapTable({
+                    columns: [{
+                        field: 'state',
+                        checkbox: true,
+                        align: 'center',
+                        valign: 'middle'
+                    }, {
+                        field: 'id',
+                        title: 'Item ID'
+                    }, {
+                        field: 'name',
+                        title: 'Item Name'
+                    }, {
+                        field: 'price',
+                        title: 'Item Price'
+                    }],
+                    data: [{
+                        id: 1,
+                        name: 'Item 1',
+                        price: '$1'
+                    }, {
+                        id: 2,
+                        name: 'Item 2',
+                        price: '$2'
+                    }]
+                });
+            });
+
+            $('#table').on('click.bs.table', function (row, $element, field) {
+                alert('Hi');
+            });
+
+
+
+        </script>*@
+
     <script src="@Url.Content("~/js/index.js")"></script>
+
 }

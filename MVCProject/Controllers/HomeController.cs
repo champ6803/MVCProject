@@ -49,5 +49,23 @@ namespace MVCProject.Controllers
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
         }
+
+        public ActionResult DeleteCustomer(List<CustomerModel> cusList)
+        {
+            try
+            {
+                bool del = cusHelp.DeleteCustomerList(cusList);
+                if (del)
+                {
+                    var customerList = cusHelp.GetCustomerList();
+                    return Json(customerList, JsonRequestBehavior.AllowGet);
+                }
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }

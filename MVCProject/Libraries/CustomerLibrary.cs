@@ -92,6 +92,37 @@ namespace MVCProject.Libraries
             }
         }
 
+        internal List<customer> Mapping(List<CustomerModel> list)
+        {
+            //ACTION = "Mapping(CustomerModel)";
+            try
+            {
+                if (list != null && list.Count > 0)
+                {
+                    List<customer> mList = new List<customer>();
+
+                    foreach (CustomerModel o in list)
+                    {
+                        mList.Add(new customer()
+                        {
+                            cus_id = o.cus_id,
+                            cus_name = o.cus_name,
+                            cus_age = o.cus_age,
+                            cus_address = o.cus_address
+                        });
+                    }
+
+                    return mList;
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public IQueryable<customer> IQueryable()
         {
             return dbh.customer;
@@ -135,16 +166,20 @@ namespace MVCProject.Libraries
             }
         }
 
-        public bool DeleteCustomer(int cus_id)
+        public bool DeleteCustomerList(List<CustomerModel> cusList)
         {
             try
             {
-                customer dbCustomer = dbh.customer.FirstOrDefault(o => o.cus_id == cus_id);
-                if (dbCustomer != null)
+                //customer dbCustomer = dbh.customer.FirstOrDefault(o => o.cus_id == cus_id);
+                List<customer> dbCustomer = Mapping(cusList);
+                if (dbCustomer.Count > 0)
                 {
-                    dbh.customer.Attach(dbCustomer);
-                    dbh.customer.Remove(dbCustomer);
-                    dbh.SaveChanges();
+                    foreach (customer cus in dbCustomer)
+                    {
+                        dbh.customer.Attach(cus);
+                        dbh.customer.Remove(cus);
+                        dbh.SaveChanges();
+                    }
                     return true;
                 }
                 return false;
