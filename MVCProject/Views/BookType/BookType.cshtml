@@ -1,0 +1,39 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">Add Book Type</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">                
+                <div class="form-group row">
+                    <label class="col-xs-2 control-label">Book Type Name</label>
+                    <div class="col-xs-6">
+                        <input class="form-control" id="book_type_name" />
+                    </div>
+                </div>              
+            </div>
+        </div>
+        <button onclick="addBookType()" class="btn btn-primary" style="background-color: brown">Add</button>
+    </div>
+</div>
+
+<div class="row" style="padding-top: 50px;">
+    <div class="col-xs-12">
+        <div class="text-center">
+            <p>Show Book Type</p>
+            <table class="table" id="myBookTypeTable">
+                    <!-- head table -->
+                    <thead>
+                        <tr>
+                            <td>Book Type Id</td>
+                            <td>Book Type Name</td>
+                        </tr>
+                    </thead>
+                    <!-- body dynamic rows -->
+                    <tbody></tbody>
+                </table>
+</div>
+    </div>
+</div>
+@section scripts{
+    <script src="@Url.Content("~/js/BookType.js")"></script>
+}
+
