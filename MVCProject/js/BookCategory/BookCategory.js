@@ -1,5 +1,12 @@
 ﻿$(function () {
     getBookCategory();
+    create_bootstrap_table();
+
+    $('#del').click(function () {
+        //$('#table').bootstrapTable('load', data);
+        var cusSel = $('#table').bootstrapTable('getSelections');
+        alert("button");
+    });
 });
 
 function getBookCategory()
@@ -77,4 +84,35 @@ function addBookCategory()
             }
         });
     }
+}
+
+function create_bootstrap_table(data) {
+    $(function () {
+        $('#table').bootstrapTable({
+            type: 'GET',
+            url: base_path + 'BookCategory/GetBookCategoryList',
+            columns: [{
+                field: 'state',
+                checkbox: true,
+                align: 'center',
+                valign: 'middle'
+            }, {
+                field: 'book_category_id',
+                title: 'id'
+            }, {
+                field: 'book_category_name',
+                title: 'name'
+            }]
+        });
+    });
+
+    $(document).ready(function() {
+        
+         
+    });
+
+   /* $('#table').on('click.bs.table', function (row, $element, field) {
+        alert('Hi');
+    });*/
+
 }

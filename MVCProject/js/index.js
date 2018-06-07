@@ -67,5 +67,39 @@ function addCustomer() {
 
 function create_bootstrap_table()
 {
-    
+    $(function () {
+        $('#table').bootstrapTable({
+            columns: [{
+                field: 'state',
+                checkbox: true,
+                align: 'center',
+                valign: 'middle'
+            }, {
+                field: 'id',
+                title: 'Item ID'
+            }, {
+                field: 'name',
+                title: 'Item Name'
+            }, {
+                field: 'price',
+                title: 'Item Price'
+            }],
+            data: [{
+                id: 1,
+                name: 'Item 1',
+                price: '$1'
+            }, {
+                id: 2,
+                name: 'Item 2',
+                price: '$2'
+            }]
+        });
+
+
+    });
+
+    $('#table').on('click.bs.table', function (row, $element, field) {
+        alert('Hi');
+    });
+
 }
