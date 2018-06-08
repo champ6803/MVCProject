@@ -10,8 +10,7 @@ namespace MVCProject.Libraries
 {
     public class BookTypeLibrary
     {
-        string SOURCE = "BookType";
-        string ACTION = "";
+
         mvc_projectEntities dbh = new mvc_projectEntities();
 
         internal BookTypeModel Mapping(book_type b)
@@ -115,7 +114,7 @@ namespace MVCProject.Libraries
             try
             {
 
-                if (IQueryable().Where(b => b.book_type_id == m.book_type_id).ToList().Count == 0)
+                if (IQueryable().Where(b => b.book_type_name == m.book_type_name).ToList().Count == 0)
                 {
                     book_type _obj = Mapping(m);
                     dbh.book_type.Add(_obj);
@@ -130,16 +129,19 @@ namespace MVCProject.Libraries
             }
         }
 
-        public bool DeleteBookType(int book_type_id)
+        public bool DeleteBookType(List<BookTypeModel> book_typeList)
         {
             try
             {
-                book_type dbBookType = dbh.book_type.FirstOrDefault(b => b.book_type_id == book_type_id);
-                if (dbBookType != null)
+                List<book_type> dbBookType = Mapping (book_typeList);
+                if (dbBookType.Count > 0)
                 {
-                    dbh.book_type.Attach(dbBookType);
-                    dbh.book_type.Remove(dbBookType);
-                    dbh.SaveChanges();
+                    foreach (book_type book_type in dbBookType)
+                    {
+                        dbh.book_type.Attach(book_type);
+                        dbh.book_type.Remove(book_type);
+                        dbh.SaveChanges();
+                    }
                     return true;
                 }
                 return false;
@@ -149,5 +151,32 @@ namespace MVCProject.Libraries
                 throw new Exception(ex.Message);
             }
         }
+
+        private List<book_type> Mapping(List<BookTypeModel> list)
+        {
+            try
+            {
+                if (list != null && list.Count > 0)
+                {
+                    List<book_type> mList = new List<book_type>();
+
+                    foreach (BookTypeModel o in list)
+                    {
+                        mList.Add(new book_type()
+                        {
+                            book_type_id = o.book_type_id,
+                            book_type_name = o.book_type_name
+                        });
+                    }
+                    return mList;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
+
