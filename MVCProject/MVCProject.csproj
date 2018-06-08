@@ -211,6 +211,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\BookCategoryController.cs" />
+    <Compile Include="Controllers\BookProductController.cs" />
     <Compile Include="Controllers\BookTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Entities\book_category.cs">
@@ -256,6 +257,7 @@
     <Compile Include="Libraries\BookTypeLibrary.cs" />
     <Compile Include="Libraries\CustomerLibrary.cs" />
     <Compile Include="Models\BookCategoryModel.cs" />
+    <Compile Include="Models\BookProductModel.cs" />
     <Compile Include="Models\BookTypeModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -280,6 +282,7 @@
     <Content Include="Global.asax" />
     <Content Include="css\style.css" />
     <Content Include="js\BookCategory\BookCategory.js" />
+    <Content Include="js\BookProduct\BookProduct.js" />
     <Content Include="js\BookType.js" />
     <Content Include="js\index.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
@@ -326,6 +329,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\BookCategory\BookCategory.cshtml" />
     <Content Include="Views\BookType\BookType.cshtml" />
+    <Content Include="Views\BookProduct\BookProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

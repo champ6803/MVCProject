@@ -22,10 +22,5 @@ namespace MVCProject.Helper
         {
             return new BookCategoryLibrary().DeleteBookCategoryList(bookCategoryList);
         }
-
-        internal object DeleteBookCategoryList()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
