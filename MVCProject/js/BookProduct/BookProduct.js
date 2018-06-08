@@ -151,30 +151,30 @@ function createTable(data) {
 
 function initTableBootstrap() {
     $('#table').bootstrapTable({
-        uniqueId: 'book_product_id',
+        uniqueId: 'id',
         columns: [{
             field: 'state',
             checkbox: true,
             align: 'center',
             valign: 'middle'
         }, {
-            field: 'book_product_id',
+            field: 'id',
             title: 'Book Product Id',
-            uniqueId: 'book_product_id'
+            uniqueId: 'id'
         }, {
-            field: 'book_product_name',
+            field: 'name',
             title: 'Book Product name'
         }, {
-            field: 'book_product_price',
+            field: 'price',
             title: 'Book Product Price'
         }, {
-            field: 'book_product_qty',
+            field: 'qty',
             title: 'Book Product Quantity'
         }, {
-            field: 'book_type_id',
+            field: 'idType',
             title: 'Book Product Type'
         }, {
-            field: 'book_category_id',
+            field: 'idCate',
             title: 'Book Product Category'
         }]
     });
