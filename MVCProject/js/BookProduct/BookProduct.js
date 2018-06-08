@@ -100,7 +100,7 @@ function addBookProduct() {
                     $('#table').bootstrapTable('load', data);
                 }
                 else {
-                    alert('no adD');
+                    alert('no add');
                 }
             },
             error: function (data) {
