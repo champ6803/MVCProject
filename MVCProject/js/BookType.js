@@ -4,7 +4,7 @@
     $('#remove').click(function () {
         var ids = $('#bootstrapTable').bootstrapTable('getSelections'); // method of bootstrap-table
         $.each(ids, function (key, val) { // loop remove
-            $('#bootstrapTable').bootstrapTable('removeByUniqueId', this.book_type_id);  //ตรงนี้ลบแค่หน้าจอ
+            $('#bootstrapTable').bootstrapTable('removeByUniqueId', this.id);  //ตรงนี้ลบแค่หน้าจอ
         });
         deleteBookType(ids); //ตรงนี้ลบใน db 
     });
@@ -95,18 +95,18 @@ function deleteBookType(del) {
 
 function creatTableBootstrap() {
     $('#bootstrapTable').bootstrapTable({
-        uniqueId: 'book_type_id',
+        uniqueId: 'id',
         columns: [{
             field: 'state',
             checkbox: true,
             align: 'center',
             valign: 'middle'
         }, {
-            field: 'book_type_id',
+            field: 'id',
             title: 'Customer ID',
             uniqueId: 'book_type_id'
         }, {
-            field: 'book_type_name',
+            field: 'name',
             title: 'Book Type Name'
         }]
     });

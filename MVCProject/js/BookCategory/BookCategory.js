@@ -4,7 +4,7 @@
     $('#remove').click(function () {
         var ids = $('#table').bootstrapTable('getSelections'); 
         $.each(ids, function (key, val) { 
-            $('#table').bootstrapTable('removeByUniqueId', this.book_caategory_id);  
+            $('#table').bootstrapTable('removeByUniqueId', this.id);  
         });
         delelteBookCategory(ids);
     });
@@ -113,17 +113,17 @@ function delelteBookCategory(del)
 
 function initTableBootstrap() {
     $('#table').bootstrapTable({
-        uniqueId: 'book_category_id',
+        uniqueId: 'id',
         columns: [{
             field: 'state',
             checkbox: true,
             align: 'center',
             valign: 'middle'
         }, {
-            field: 'book_category_id',
+            field: 'id',
             title: 'id'
         }, {
-            field: 'book_category_name',
+            field: 'name',
             title: 'name'
         }]
     });
