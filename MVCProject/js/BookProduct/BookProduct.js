@@ -5,7 +5,7 @@ $(function () {
     getBookProduct()
 
     $('#add').click(function () {
-        alert($('#select_product_cate').val());
+      
     });
     $('#remove').click(function () {
         var ids = $('#table').bootstrapTable('getSelections');
@@ -76,9 +76,11 @@ function getBookType() {
 }
 
 function addBookProduct() {
-    var book_product_name = $('#book_category_name').val();
+    var book_product_name = $('#book_product_name').val();
     var book_product_price = $('#book_product_price').val();
-    var book_product_qty = $('#book_category_qty').val();
+    var book_product_qty = $('#book_product_qty').val();
+    var select_product_type = $('#select_product_type').val();
+    var select_product_cate = $('#select_product_cate').val();
 
     if (book_product_name && book_product_price && book_product_qty) {
         $.ajax({
@@ -88,7 +90,9 @@ function addBookProduct() {
             data: {
                 'book_product_name ': book_product_name,
                 'book_product_price ': book_product_price,
-                'book_product_qty ': book_product_qty
+                'book_product_qty ': book_product_qty,
+                'select_product_type ': select_product_type,
+                'select_product_cate ': select_product_cate
             },
             success: function (data) {
                 if (data) {
@@ -96,7 +100,7 @@ function addBookProduct() {
                     $('#table').bootstrapTable('load', data);
                 }
                 else {
-                    alert('fail');
+                    alert('no add');
                 }
             },
             error: function (data) {
