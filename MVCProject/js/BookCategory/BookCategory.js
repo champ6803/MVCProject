@@ -24,9 +24,6 @@ function getBookCategory()
                 initTableBootstrap();
                 $('#table').bootstrapTable('load', data);
             }
-            else {
-                alert('fail');
-            }
         },
         error: function (data)
         {

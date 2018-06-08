@@ -255,3 +255,4 @@ D:\G-ABLE\project\MVCProject\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\G-ABLE\project\MVCProject\obj\Debug\MVCProject.dll
 D:\G-ABLE\project\MVCProject\obj\Debug\MVCProject.pdb
 D:\G-ABLE\project\MVCProject\obj\Debug\MVCProject.csprojResolveAssemblyReference.cache
+D:\Workspace\MVCProject\MVCProject\obj\Debug\MVCProject.csprojResolveAssemblyReference.cache
