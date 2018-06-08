@@ -259,6 +259,7 @@
     <Compile Include="Libraries\BookProductLibrary.cs" />
     <Compile Include="Libraries\CustomerLibrary.cs" />
     <Compile Include="Models\BookCategoryModel.cs" />
+    <Compile Include="Models\BookProductModel.cs" />
     <Compile Include="Models\BookTypeModel.cs" />
     <Compile Include="Models\BookProductModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />

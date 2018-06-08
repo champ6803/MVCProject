@@ -8,9 +8,9 @@
         <EntityTypeShape EntityType="mvc_projectModel.book_category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="mvc_projectModel.book_order" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="mvc_projectModel.book_order_detail" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="mvc_projectModel.book_product" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mvc_projectModel.book_product" Width="1.875" PointX="2.625" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="mvc_projectModel.book_type" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="mvc_projectModel.customer" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mvc_projectModel.customer" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

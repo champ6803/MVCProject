@@ -64,7 +64,7 @@ function addCustomer() {
                 'cus_age': cus_age,
                 'cus_address': cus_address
             },
-            success: function (data) {
+            success: function (data) {  //callback 
                 if (data) {
                     //createTable(data);
                     $('#table').bootstrapTable('load', data);
