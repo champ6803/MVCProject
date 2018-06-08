@@ -251,17 +251,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\BookCategoryHelper.cs" />
-    <Compile Include="Helper\BookTypeHelper.cs" />
     <Compile Include="Helper\BookProductHelper.cs" />
+    <Compile Include="Helper\BookTypeHelper.cs" />
     <Compile Include="Helper\CustomerHelper.cs" />
     <Compile Include="Libraries\BookCategoryLibrary.cs" />
-    <Compile Include="Libraries\BookTypeLibrary.cs" />
     <Compile Include="Libraries\BookProductLibrary.cs" />
+    <Compile Include="Libraries\BookTypeLibrary.cs" />
     <Compile Include="Libraries\CustomerLibrary.cs" />
     <Compile Include="Models\BookCategoryModel.cs" />
     <Compile Include="Models\BookProductModel.cs" />
     <Compile Include="Models\BookTypeModel.cs" />
-    <Compile Include="Models\BookProductModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

@@ -168,6 +168,7 @@ D:\Workspace\MVCProject\MVCProject\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Workspace\MVCProject\MVCProject\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Workspace\MVCProject\MVCProject\obj\Debug\MVCProject.dll
 D:\Workspace\MVCProject\MVCProject\obj\Debug\MVCProject.pdb
+D:\Workspace\MVCProject\MVCProject\MVCProject\obj\Debug\MVCProject.csprojResolveAssemblyReference.cache
 D:\G-ABLE\project\MVCProject\bin\ApplicationInsights.config
 D:\G-ABLE\project\MVCProject\bin\roslyn\csc.exe
 D:\G-ABLE\project\MVCProject\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -253,5 +254,3 @@ D:\G-ABLE\project\MVCProject\bin\Microsoft.Owin.Security.Twitter.xml
 D:\G-ABLE\project\MVCProject\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\G-ABLE\project\MVCProject\obj\Debug\MVCProject.dll
 D:\G-ABLE\project\MVCProject\obj\Debug\MVCProject.pdb
-D:\G-ABLE\project\MVCProject\obj\Debug\MVCProject.csprojResolveAssemblyReference.cache
-D:\Workspace\MVCProject\MVCProject\MVCProject\obj\Debug\MVCProject.csprojResolveAssemblyReference.cache
