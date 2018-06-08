@@ -103,7 +103,7 @@ function creatTableBootstrap() {
             valign: 'middle'
         }, {
             field: 'id',
-            title: 'Customer ID',
+            title: 'Book Type ID',
             uniqueId: 'book_type_id'
         }, {
             field: 'name',
