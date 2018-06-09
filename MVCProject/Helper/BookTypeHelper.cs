@@ -19,5 +19,10 @@ namespace MVCProject.Helper
         {
             return new BookTypeLibrary().AddBookType(book);
         }
+
+        public bool DeleteBookTypeList(List<BookTypeModel> book_typeList)
+        {
+            return new BookTypeLibrary().DeleteBookType(book_typeList);
+        }
     }
 }

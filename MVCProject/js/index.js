@@ -1,50 +1,29 @@
 ﻿$(function () {
-   var data = getCustomer();
-    $('#table').bootstrapTable({
-        uniqueId: 'cus_id',
-        columns: [{
-            field: 'state',
-            checkbox: true,
-            align: 'center',
-            valign: 'middle'
-        }, {
-            field: 'cus_id',
-            title: 'Customer ID',
-            uniqueId: 'cus_id'
-        }, {
-            field: 'cus_name',
-            title: 'Customer Name'
-        }, {
-            field: 'cus_age',
-            title: 'Customer Age'
-        }, {
-            field: 'cus_address',
-            title: 'Customer Address'
-        }]
-    });
-    $('#table').bootstrapTable('load', data);
-
-
+    getCustomer();
+    
     $('#remove').click(function () {
-        var ids = $('#table').bootstrapTable('getSelections');
-        $.each(ids, function (key, val) {
-            $('#table').bootstrapTable('removeByUniqueId', this.cus_id);
+        var ids = $('#table').bootstrapTable('getSelections'); // method of bootstrap-table
+        $.each(ids, function (key, val) { // loop remove
+            $('#table').bootstrapTable('removeByUniqueId', this.cus_id);  //ตรงนี้ลบแค่หน้าจอ
         });
-        deleteCustomer(ids);
+        deleteCustomer(ids); //ตรงนี้ลบใน db 
     });
 });
 
+function deleteCus() {
+    alert('test');
+}
+
 function getCustomer() {
-    var cus_data = "";
     $.ajax({
         type: 'GET',
         url: base_path + 'Home/GetCustomerList',
         async: false,
         success: function (data) {
-            if (data) {
+            if (data) {                
                 //createTable(data);
-                cus_data = data;
-
+                initTableBootstrap();
+                $('#table').bootstrapTable('load', data);
             } else {
                 alert('fail');
             }
@@ -53,7 +32,6 @@ function getCustomer() {
             alert('error');
         }
     });
-    return cus_data;
 }
 
 function createTable(data) {
@@ -86,7 +64,7 @@ function addCustomer() {
                 'cus_age': cus_age,
                 'cus_address': cus_address
             },
-            success: function (data) {
+            success: function (data) {  //callback 
                 if (data) {
                     //createTable(data);
                     $('#table').bootstrapTable('load', data);
@@ -119,5 +97,30 @@ function deleteCustomer(del) {
         error: function (data) {
             alert('error');
         }
+    });
+}
+
+function initTableBootstrap() {
+    $('#table').bootstrapTable({
+        uniqueId: 'cus_id',
+        columns: [{
+            field: 'state',
+            checkbox: true,
+            align: 'center',
+            valign: 'middle'
+        }, {
+            field: 'cus_id',
+            title: 'Customer ID',
+            uniqueId: 'cus_id'
+        }, {
+            field: 'cus_name',
+            title: 'Customer Name'
+        }, {
+            field: 'cus_age',
+            title: 'Customer Age'
+        }, {
+            field: 'cus_address',
+            title: 'Customer Address'
+        }]
     });
 }

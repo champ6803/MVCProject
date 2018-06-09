@@ -23,7 +23,15 @@ namespace MVCProject.Controllers
             try
             {
                 var GetBookTypeList = book_typeHelp.GetBookTypeList();
-                return Json(GetBookTypeList, JsonRequestBehavior.AllowGet);
+                if (GetBookTypeList.Count > 0) {
+                    var list = GetBookTypeList.Select(o => new
+                    {
+                        id = o.book_type_id,
+                        name = o.book_type_name
+                    }).ToList();
+                    return Json(list, JsonRequestBehavior.AllowGet);
+                }
+                return Json(false, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -41,6 +49,24 @@ namespace MVCProject.Controllers
                 {
                     var book_typeList = book_typeHelp.GetBookTypeList();
                     return Json(book_typeList, JsonRequestBehavior.AllowGet);
+                }
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult DeleteBookType(List<BookTypeModel> book_typeList)
+        {
+            try
+            {
+                bool del = book_typeHelp.DeleteBookTypeList(book_typeList);
+                if (del)
+                {
+                    var Book_typeList = book_typeHelp.GetBookTypeList();
+                    return Json(Book_typeList, JsonRequestBehavior.AllowGet);
                 }
                 return Json(false, JsonRequestBehavior.AllowGet);
             }

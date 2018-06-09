@@ -18,8 +18,8 @@
 <div class="row" style="padding-top: 50px;">
     <div class="col-xs-12">
         <div class="text-center">
-            <p>Show Book Type</p>
-            <table class="table" id="myBookTypeTable">
+            <h4>Show Book Type</h4>
+            @*@<table class="table" id="myBookTypeTable">
                     <!-- head table -->
                     <thead>
                         <tr>
@@ -29,8 +29,14 @@
                     </thead>
                     <!-- body dynamic rows -->
                     <tbody></tbody>
-                </table>
-</div>
+                </table>*@
+            <table class="table" id="bootstrapTable"></table>
+        </div>  
+        <div class="row" style="padding-top: 20px;">
+            <div class="col-xs-12">
+                <button class="btn btn-danger" id="remove">Delete</button>
+            </div>
+        </div>      
     </div>
 </div>
 @section scripts{

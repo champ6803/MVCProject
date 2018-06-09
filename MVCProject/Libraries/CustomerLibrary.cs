@@ -134,7 +134,7 @@ namespace MVCProject.Libraries
             try
             {
                 List<customer> objList = IQueryable().ToList();
-                List<CustomerModel> m = Mapping(objList);
+                List<CustomerModel> m = Mapping(objList);  // เอามา map กับ model ของ C# ที่เราเขียน
 
                 return m;
             }

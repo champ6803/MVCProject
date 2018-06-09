@@ -9,5 +9,6 @@ namespace MVCProject.Models
     {
         public int book_type_id { get; set; }
         public string book_type_name { get; set; }
+        public bool state { get; set; }
     }
 }
