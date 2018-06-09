@@ -24,8 +24,6 @@ function getCustomer() {
                 //createTable(data);
                 initTableBootstrap();
                 $('#table').bootstrapTable('load', data);
-            } else {
-                alert('fail');
             }
         },
         error: function (data) {
@@ -68,8 +66,6 @@ function addCustomer() {
                 if (data) {
                     //createTable(data);
                     $('#table').bootstrapTable('load', data);
-                } else {
-                    alert('fail');
                 }
             },
             error: function (data) {

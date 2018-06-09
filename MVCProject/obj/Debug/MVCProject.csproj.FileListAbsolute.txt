@@ -258,7 +258,6 @@ D:\G-ABLE\project\MVCProject\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\G-ABLE\project\MVCProject\obj\Debug\MVCProject.dll
 D:\G-ABLE\project\MVCProject\obj\Debug\MVCProject.pdb
 D:\G-ABLE\project\MVCProject\obj\Debug\MVCProject.csprojResolveAssemblyReference.cache
-D:\Workspace\MVCProject\MVCProject\obj\Debug\MVCProject.csprojResolveAssemblyReference.cache
 D:\G-ABLE\MVCProject\MVCProject\bin\ApplicationInsights.config
 D:\G-ABLE\MVCProject\MVCProject\bin\roslyn\csc.exe
 D:\G-ABLE\MVCProject\MVCProject\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
