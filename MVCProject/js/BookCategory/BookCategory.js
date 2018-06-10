@@ -69,9 +69,6 @@ function addBookCategory()
                     //createTable(data);
                     $('#table').bootstrapTable('load', data);
                 }
-                else {
-                    alert('fail');
-                }
             },
             error: function(data)
             {
@@ -94,8 +91,6 @@ function delelteBookCategory(del)
             success: function (data) {
                 if (data) {
                     $('#table').bootstrapTable('load', data);
-                } else {
-                    alert('false');
                 }
             },
             error: function (data) {
