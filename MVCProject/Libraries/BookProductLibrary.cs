@@ -70,6 +70,16 @@ namespace MVCProject.Libraries
             return dbh.book_product;
         }
 
+        public IQueryable<book_category> IQueryableCategory()
+        {
+            return dbh.book_category;
+        }
+
+        public IQueryable<book_type> IQueryableType()
+        {
+            return dbh.book_type;
+        }
+
         public List<BookProductModel> GetBookProductList()
         {
             try
