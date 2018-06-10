@@ -22,20 +22,9 @@ namespace MVCProject.Controllers
         {
             try
             {
-                var bookProductList = bookProductHelp.GetBookProduct();
+                var bookProductList = bookProductHelp.GetBookProduct();                
 
-                var list = bookProductList.Select(o => new
-                {
-                    id = o.book_product_id,
-                    name = o.book_product_name,
-                    price = o.book_product_price,
-                    qty = o.book_product_qty,
-                    idType = o.book_type_id,
-                    idCate = o.book_category_id
-
-                }).ToList();
-
-                return Json(list, JsonRequestBehavior.AllowGet);
+                return Json(bookProductList, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -44,7 +33,7 @@ namespace MVCProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddBookProduct(BookCategoryModel bookProd)
+        public ActionResult AddBookProduct(BookProductModel bookProd)
         {
             try
             {

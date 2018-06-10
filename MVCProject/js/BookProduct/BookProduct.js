@@ -79,20 +79,20 @@ function addBookProduct() {
     var book_product_name = $('#book_product_name').val();
     var book_product_price = $('#book_product_price').val();
     var book_product_qty = $('#book_product_qty').val();
-    var select_product_type = $('#select_product_type').val();
-    var select_product_cate = $('#select_product_cate').val();
+    var book_type_id = $('#select_product_type').val();
+    var book_category_id = $('#select_product_cate').val();
 
-    if (book_product_name && book_product_price && book_product_qty) {
+    if (book_product_name && book_product_price && book_product_qty && book_type_id && book_category_id) {
         $.ajax({
             type: 'POST',
             url: base_path + 'BookProduct/AddBookProduct',
             async: false,
             data: {
-                'book_product_name ': book_product_name,
-                'book_product_price ': book_product_price,
-                'book_product_qty ': book_product_qty,
-                'select_product_type ': select_product_type,
-                'select_product_cate ': select_product_cate
+                'book_product_name': book_product_name,
+                'book_product_price': book_product_price,
+                'book_product_qty': book_product_qty,
+                'book_type_id': book_type_id,
+                'book_category_id': book_category_id
             },
             success: function (data) {
                 if (data) {
@@ -136,49 +136,32 @@ function delelteBookProduct(del) {
     }
 }
 
-function createTable(data) {
-    if (data) {
-        $('#myTabletest > tbody').empty();
-        $.each(data, function () {
-            var tr = "<tr>";
-            tr = tr + "<td>" + this.book_product_id + "</td>";
-            tr = tr + "<td>" + this.book_type_id + "</td>";
-            tr = tr + "<td>" + this.book_category_id + "</td>";
-            tr = tr + "<td>" + this.book_product_name + "</td>";
-            tr = tr + "<td>" + this.book_product_price + "</td>";
-            tr = tr + "<td>" + this.book_product_qty + "</td>";
-            tr = tr + "</tr>";
-            $('#myTabletest > tbody:last').append(tr);
-        });
-    }
-}
-
 function initTableBootstrap() {
     $('#table').bootstrapTable({
-        uniqueId: 'id',
+        uniqueId: 'book_product_id',
         columns: [{
             field: 'state',
             checkbox: true,
             align: 'center',
             valign: 'middle'
         }, {
-            field: 'id',
+            field: 'book_product_id',
             title: 'Book Product Id',
             uniqueId: 'id'
         }, {
-            field: 'name',
+            field: 'book_product_name',
             title: 'Book Product name'
         }, {
-            field: 'price',
+            field: 'book_product_price',
             title: 'Book Product Price'
         }, {
-            field: 'qty',
+            field: 'book_product_qty',
             title: 'Book Product Quantity'
         }, {
-            field: 'idType',
+            field: 'book_type_id',
             title: 'Book Product Type'
         }, {
-            field: 'idCate',
+            field: 'book_category_id',
             title: 'Book Product Category'
         }]
     });

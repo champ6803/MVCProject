@@ -19,10 +19,5 @@ namespace MVCProject.Helper
         {
             return new BookProductLibrary().AddBookProduct(bookProd);
         }
-
-        internal bool AddBookProduct(BookCategoryModel bookProd)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
