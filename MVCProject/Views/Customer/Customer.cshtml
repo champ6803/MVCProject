@@ -1,0 +1,97 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">Add Customer</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group row">
+                    <label class="col-xs-2 control-label">Name</label>
+                    <div class="col-xs-6">
+                        <input class="form-control" id="cus_name" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xs-2 control-label">Age</label>
+                    <div class="col-xs-6">
+                        <input class="form-control" id="cus_age" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xs-2 control-label">Address</label>
+                    <div class="col-xs-6">
+                        <input class="form-control" id="cus_address" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="addCustomer()" class="btn btn-primary">Add</button>
+    </div>
+</div>
+
+<div class="row" style="padding-top: 50px;">
+    <div class="col-xs-12 text-center">
+        <h3>Show Customer</h3>
+        @*<table class="table" id="myTable">
+                <!-- head table -->
+                <thead>
+                    <tr>
+                        <td>CustomerID</td>
+                        <td>Name</td>
+                        <td>Age</td>
+                        <td>Address</td>
+                    </tr>
+                </thead>
+                <!-- body dynamic rows -->
+                <tbody></tbody>
+            </table>*@
+        <table id="table"></table>
+    </div>
+</div>
+<div class="row" style="padding-top: 20px;">
+    <div class="col-xs-12">
+        <button class="btn btn-danger" id="remove">Delete</button>
+        <button class="btn btn-default" onclick="deleteCus()">Test</button>
+    </div>
+</div>
+
+@section scripts{
+    @*<script>
+            $(function () {
+                $('#table').bootstrapTable({
+                    columns: [{
+                        field: 'state',
+                        checkbox: true,
+                        align: 'center',
+                        valign: 'middle'
+                    }, {
+                        field: 'id',
+                        title: 'Item ID'
+                    }, {
+                        field: 'name',
+                        title: 'Item Name'
+                    }, {
+                        field: 'price',
+                        title: 'Item Price'
+                    }],
+                    data: [{
+                        id: 1,
+                        name: 'Item 1',
+                        price: '$1'
+                    }, {
+                        id: 2,
+                        name: 'Item 2',
+                        price: '$2'
+                    }]
+                });
+            });
+
+            $('#table').on('click.bs.table', function (row, $element, field) {
+                alert('Hi');
+            });
+
+
+
+        </script>*@
+
+    <script src="@Url.Content("~/js/Customer/Customer.js")"></script>
+
+}
