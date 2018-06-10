@@ -23,7 +23,7 @@ function getBookCategory()
                 //createTable(data);
                 initTableBootstrap();
                 $('#table').bootstrapTable('load', data);
-            }
+            } 
         },
         error: function (data)
         {

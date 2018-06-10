@@ -13,5 +13,7 @@ namespace MVCProject.Models
         public string book_product_name { get; set; }
         public float book_product_price { get; set; }
         public int book_product_qty { get; set; }
+        public string book_type_name { get; set; }
+        public string book_category_name { get; set; }
     }
 }

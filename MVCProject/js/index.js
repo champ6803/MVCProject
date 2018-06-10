@@ -1,30 +1,23 @@
-<<<<<<< HEAD
-﻿
-=======
-﻿$(function () {
-    getCustomer();
-    
-    $('#remove').click(function () {
-        var ids = $('#table').bootstrapTable('getSelections'); // method of bootstrap-table
-        $.each(ids, function (key, val) { // loop remove
-            $('#table').bootstrapTable('removeByUniqueId', this.cus_id);  //ตรงนี้ลบแค่หน้าจอ
-        });
-        deleteCustomer(ids); //ตรงนี้ลบใน db 
+/// <reference path="D:\Workspace\MVCProject\MVCProject\Views/BookType/BookType.cshtml" />
+$(function () {
+    getBookCategory();
+    getBookType();
+    getBookProduct()
+
+    $('#table').on('click-row.bs.table', function (row, $element, field) {
+        $('#productQty').modal('show');
+        $('#productQty').bootstrapTable('getRowByUniqueId', id);
+        alert(book_product_qty);
     });
 });
 
-function deleteCus() {
-    alert('test');
-}
-
-function getCustomer() {
+function getBookProduct() {
     $.ajax({
         type: 'GET',
-        url: base_path + 'Home/GetCustomerList',
+        url: base_path + 'BookProduct/GetBookProductList',
         async: false,
         success: function (data) {
-            if (data) {                
-                //createTable(data);
+            if (data) {
                 initTableBootstrap();
                 $('#table').bootstrapTable('load', data);
             }
@@ -35,59 +28,37 @@ function getCustomer() {
     });
 }
 
-function createTable(data) {
-    if (data) {
-        $('#myTable > tbody').empty();
-        $.each(data, function () {
-            var tr = "<tr>";
-            tr = tr + "<td>" + this.cus_id + "</td>";
-            tr = tr + "<td>" + this.cus_name + "</td>";
-            tr = tr + "<td>" + this.cus_age + "</td>";
-            tr = tr + "<td>" + this.cus_address + "</td>";
-            tr = tr + "</tr>";
-            $('#myTable > tbody:last').append(tr);
-        });
-    }
-}
-
-function addCustomer() {
-    var cus_name = $('#cus_name').val();
-    var cus_age = $('#cus_age').val();
-    var cus_address = $('#cus_address').val();
-
-    if (cus_name && cus_age && cus_address) {
-        $.ajax({
-            type: 'POST',
-            url: base_path + 'Home/AddCustomer',
-            async: false,
-            data: {
-                'cus_name': cus_name,
-                'cus_age': cus_age,
-                'cus_address': cus_address
-            },
-            success: function (data) {  //callback 
-                if (data) {
-                    //createTable(data);
-                    $('#table').bootstrapTable('load', data);
-                }
-            },
-            error: function (data) {
-                alert('error');
-            }
-        });
-    }
-}
-
-function deleteCustomer(del) {
+function getBookCategory() {
     $.ajax({
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        type: 'POST',
-        url: base_path + 'Home/DeleteCustomer',
+        type: 'GET',
+        url: base_path + 'BookCategory/GetBookCategoryList',
         async: false,
-        data: JSON.stringify({ 'cusList': del }),
         success: function (data) {
             if (data) {
+                populateSelect($('#select_product_cate'), data);
+                initTableBootstrap();
+                $('#table').bootstrapTable('load', data);
+            }
+            else {
+                alert('fail');
+            }
+        },
+        error: function (data) {
+            alert('error');
+        }
+    });
+}
+
+function getBookType() {
+    var book_type = "";
+    $.ajax({
+        type: 'GET',
+        url: base_path + 'BookType/GetBookTypeList',
+        async: false,
+        success: function (data) {
+            if (data) {
+                populateSelect($('#select_product_type'), data);
+                initTableBootstrap();
                 $('#table').bootstrapTable('load', data);
             } else {
                 alert('fail');
@@ -99,28 +70,100 @@ function deleteCustomer(del) {
     });
 }
 
+function addBookProduct() {
+    var book_product_name = $('#book_product_name').val();
+    var book_product_price = $('#book_product_price').val();
+    var book_product_qty = $('#book_product_qty').val();
+    var book_type_id = $('#select_product_type').val();
+    var book_category_id = $('#select_product_cate').val();
+
+    if (book_product_name && book_product_price && book_product_qty && book_type_id && book_category_id) {
+        $.ajax({
+            type: 'POST',
+            url: base_path + 'BookProduct/AddBookProduct',
+            async: false,
+            data: {
+                'book_product_name': book_product_name,
+                'book_product_price': book_product_price,
+                'book_product_qty': book_product_qty,
+                'book_type_id': book_type_id,
+                'book_category_id': book_category_id
+            },
+            success: function (data) {
+                if (data) {
+                    //createTable(data);
+                    $('#table').bootstrapTable('load', data);
+                }
+                else {
+                    alert('no add');
+                }
+            },
+            error: function (data) {
+                alert('error');
+            }
+        });
+    }
+}
+
+function delelteBookProduct(del) {
+    if (del.length > 0) {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            url: base_path + 'BookProduct/DeleteBookProduct',
+            asyn: false,
+            data: JSON.stringify({ 'bookProductList': del }),
+            success: function (data) {
+                if (data) {
+                    $('#table').bootstrapTable('load', data);
+                } else {
+                    alert('false');
+                }
+            },
+            error: function (data) {
+                alert("error");
+            }
+        });
+    }
+    else {
+        alert('');
+    }
+}
+
 function initTableBootstrap() {
     $('#table').bootstrapTable({
-        uniqueId: 'cus_id',
+        uniqueId: 'book_product_id',
         columns: [{
             field: 'state',
             checkbox: true,
             align: 'center',
             valign: 'middle'
         }, {
-            field: 'cus_id',
-            title: 'Customer ID',
-            uniqueId: 'cus_id'
+            field: 'book_product_id',
+            title: 'Book Product Id',
+            uniqueId: 'id'
         }, {
-            field: 'cus_name',
-            title: 'Customer Name'
+            field: 'book_product_name',
+            title: 'Book Product name'
         }, {
-            field: 'cus_age',
-            title: 'Customer Age'
+            field: 'book_product_price',
+            title: 'Book Product Price'
         }, {
-            field: 'cus_address',
-            title: 'Customer Address'
+            field: 'book_product_qty',
+            title: 'Book Product Quantity'
+        }, {
+            field: 'book_type_id',
+            title: 'Book Product Type'
+        }, {
+            field: 'book_category_id',
+            title: 'Book Product Category'
         }]
     });
 }
->>>>>>> 1c21cee8de38ca259ec0411a5a944f0f22b82c2a
+
+function populateSelect(selector, options) {
+    $.each(options, function (i, p) {
+        selector.append($('<option></option>').val(this.id).html(this.name));
+    });
+}

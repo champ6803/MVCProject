@@ -8,6 +8,7 @@
         });
         deleteCustomer(ids); //ตรงนี้ลบใน db 
     });
+
 });
 
 function deleteCus() {
