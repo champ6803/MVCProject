@@ -1,16 +1,44 @@
-/// <reference path="D:\Workspace\MVCProject\MVCProject\Views/BookType/BookType.cshtml" />
+﻿/// <reference path="D:\Workspace\MVCProject\MVCProject\Views/BookType/BookType.cshtml" />
 $(function () {
     getBookCategory();
     getBookType();
     getBookProduct()
 
     $('#table').on('click-row.bs.table', function (row, $element, field) {
-        $('#productQty').modal('show');
-        $('#productQty').bootstrapTable('getRowByUniqueId', id);
-        alert(book_product_qty);
+        var ids = $('#table').bootstrapTable('getSelections');
+        $.each(ids, function (key, val) {
+            $('#productQty').modal('show');
+            getQuantity(ids);
+        });      
     });
+
+    $('#productQty').on('hidden.bs.modal', function () {
+        $(this)
+        .find("input,textarea,select")
+        .val('')
+        .end();
+    })
 });
 
+function getQuantity() {
+    var getQty = 0;
+    var result;
+    var qty = $('#qty').val();
+    var ids = $('#table').bootstrapTable('getSelections');
+    $.each(ids, function (key, val) {        
+        getQty = this.book_product_qty;
+    });
+    //alert("getQty: " + getQty);
+    //alert("qty: " + qty);
+    if (qty > getQty) {
+        alert('please input agin !');
+    }
+    if (qty <= getQty && qty != 0) {
+        book_product_qty = getQty - qty;
+        $('#productQty').modal('hide');
+        alert('buy ' + '\n qty in stock: ' + book_product_qty);
+    }
+}
 function getBookProduct() {
     $.ajax({
         type: 'GET',
@@ -27,6 +55,8 @@ function getBookProduct() {
         }
     });
 }
+
+
 
 function getBookCategory() {
     $.ajax({

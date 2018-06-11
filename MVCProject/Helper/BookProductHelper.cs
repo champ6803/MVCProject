@@ -9,7 +9,7 @@ namespace MVCProject.Helper
 {
     public class BookProductHelper
     {
-        public List<BookProductModel> GetBookProduct()
+        public List<BookProductModel> GetBookProductList()
         {
             List<BookProductModel> list = new BookProductLibrary().GetBookProductList();
             return list;
@@ -19,5 +19,6 @@ namespace MVCProject.Helper
         {
             return new BookProductLibrary().AddBookProduct(bookProd);
         }
+
     }
 }
