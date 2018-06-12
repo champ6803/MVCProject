@@ -227,6 +227,9 @@
     <Compile Include="Entities\book_product.cs">
       <DependentUpon>mvc_projectEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\book_status.cs">
+      <DependentUpon>mvc_projectEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\book_type.cs">
       <DependentUpon>mvc_projectEntities.tt</DependentUpon>
     </Compile>

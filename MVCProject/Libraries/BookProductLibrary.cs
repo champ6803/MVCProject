@@ -85,9 +85,23 @@ namespace MVCProject.Libraries
         {
             try
             {
-                List<book_product> objList = IQueryable().ToList();
-                List<BookProductModel> m = Mapping(objList);
-                return m;
+                List<BookProductModel> bookProductModelList = new List<BookProductModel>();
+                List<book_product> bookProductList = IQueryable().ToList();
+                foreach (var bookProduct in bookProductList)
+                {
+                    BookProductModel bookProductModel = new BookProductModel();
+                    bookProductModel.book_product_id = bookProduct.book_product_id;
+                    bookProductModel.book_product_name = bookProduct.book_product_name;
+                    bookProductModel.book_category_id = bookProduct.book_category_id;
+                    bookProductModel.book_category_name = IQueryableCategory().FirstOrDefault(o => o.book_category_id == bookProduct.book_category_id).book_category_name;
+                    bookProductModel.book_type_id = bookProduct.book_type_id;
+                    bookProductModel.book_type_name = IQueryableType().FirstOrDefault(o => o.book_type_id == bookProduct.book_type_id).book_type_name;
+                    bookProductModel.book_product_price = bookProduct.book_product_price;
+                    bookProductModel.book_product_qty = bookProduct.book_product_qty;
+                    bookProductModelList.Add(bookProductModel);
+                }
+
+                return bookProductModelList;
             }
             catch (Exception ex)
             {

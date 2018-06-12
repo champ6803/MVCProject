@@ -12,12 +12,10 @@ namespace MVCProject.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class book_order
+    public partial class book_status
     {
-        public int book_order_id { get; set; }
-        public int cus_id { get; set; }
+        public int book_status_id { get; set; }
         public string book_status_code { get; set; }
-        public float book_order_total { get; set; }
-        public System.DateTime book_order_date { get; set; }
+        public string book_status_name { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿/// <reference path="D:\Workspace\MVCProject\MVCProject\Views/BookType/BookType.cshtml" />
 $(function () {
+    initTableBootstrap();
     getBookCategory();
     getBookType();
     getBookProduct()
@@ -41,7 +42,6 @@ function getBookCategory() {
         success: function (data) {
             if (data) {
                 populateSelect($('#select_product_cate'), data);
-                initTableBootstrap();
                 $('#table').bootstrapTable('load', data);
             }
             else {
@@ -63,7 +63,6 @@ function getBookType() {
         success: function (data) {
             if (data) {
                 populateSelect($('#select_product_type'), data);
-                initTableBootstrap();
                 $('#table').bootstrapTable('load', data);
             } else {
                 alert('fail');
@@ -150,18 +149,20 @@ function initTableBootstrap() {
             uniqueId: 'id'
         }, {
             field: 'book_product_name',
-            title: 'Book Product name'
+            title: 'Book Product name',
+            editable: true
         }, {
             field: 'book_product_price',
-            title: 'Book Product Price'
+            title: 'Book Product Price',
+            editable: false
         }, {
             field: 'book_product_qty',
             title: 'Book Product Quantity'
         }, {
-            field: 'book_type_id',
+            field: 'book_type_name',
             title: 'Book Product Type'
         }, {
-            field: 'book_category_id',
+            field: 'book_category_name',
             title: 'Book Product Category'
         }]
     });

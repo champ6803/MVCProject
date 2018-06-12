@@ -13,6 +13,7 @@
     </Key>
     <Property Name="book_order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="cus_id" Type="int" Nullable="false" />
+    <Property Name="book_status_code" Type="char" MaxLength="2" Nullable="false" />
     <Property Name="book_order_total" Type="float" Nullable="false" />
     <Property Name="book_order_date" Type="timestamp" Precision="0" Nullable="false" />
   </EntityType>
@@ -37,6 +38,14 @@
     <Property Name="book_product_price" Type="float" Nullable="false" />
     <Property Name="book_product_qty" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="book_status">
+    <Key>
+      <PropertyRef Name="book_status_id" />
+    </Key>
+    <Property Name="book_status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="book_status_code" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="book_status_name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="book_type">
     <Key>
       <PropertyRef Name="book_type_id" />
@@ -58,6 +67,7 @@
     <EntitySet Name="book_order" EntityType="Self.book_order" Schema="mvc_project" store:Type="Tables" />
     <EntitySet Name="book_order_detail" EntityType="Self.book_order_detail" Schema="mvc_project" store:Type="Tables" />
     <EntitySet Name="book_product" EntityType="Self.book_product" Schema="mvc_project" store:Type="Tables" />
+    <EntitySet Name="book_status" EntityType="Self.book_status" Schema="mvc_project" store:Type="Tables" />
     <EntitySet Name="book_type" EntityType="Self.book_type" Schema="mvc_project" store:Type="Tables" />
     <EntitySet Name="customer" EntityType="Self.customer" Schema="mvc_project" store:Type="Tables" />
   </EntityContainer>

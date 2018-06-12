@@ -29,6 +29,7 @@ namespace MVCProject.Entities
         public virtual DbSet<book_order> book_order { get; set; }
         public virtual DbSet<book_order_detail> book_order_detail { get; set; }
         public virtual DbSet<book_product> book_product { get; set; }
+        public virtual DbSet<book_status> book_status { get; set; }
         public virtual DbSet<book_type> book_type { get; set; }
         public virtual DbSet<customer> customer { get; set; }
     }

@@ -24,15 +24,7 @@ namespace MVCProject.Controllers
             try
             {
                 var GetBookProductList = bookProductHelp.GetBookProductList();
-                var list = GetBookProductList.Select(o => new
-                {
-                    book_product_id = o.book_product_id,
-                    book_product_name = o.book_product_name,
-                    book_product_price = o.book_product_price,
-                    book_product_qty = o.book_product_qty,
-                    book_type_id = o.book_type_id,
-                    book_category_id = o.book_category_id
-                }).ToList();
+                var list = bookProductHelp.GetBookProductList();
                 return Json(list, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)

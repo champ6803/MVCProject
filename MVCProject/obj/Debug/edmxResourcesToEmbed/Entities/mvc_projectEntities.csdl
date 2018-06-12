@@ -1,11 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="mvc_projectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="mvc_projectEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="book_category" EntityType="mvc_projectModel.book_category" />
+    <EntitySet Name="book_order" EntityType="mvc_projectModel.book_order" />
+    <EntitySet Name="book_order_detail" EntityType="mvc_projectModel.book_order_detail" />
+    <EntitySet Name="book_product" EntityType="mvc_projectModel.book_product" />
+    <EntitySet Name="book_status" EntityType="mvc_projectModel.book_status" />
+    <EntitySet Name="book_type" EntityType="mvc_projectModel.book_type" />
+    <EntitySet Name="customer" EntityType="mvc_projectModel.customer" />
+  </EntityContainer>
   <EntityType Name="book_category">
     <Key>
       <PropertyRef Name="book_category_id" />
     </Key>
     <Property Name="book_category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="book_category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="book_category_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="book_order">
     <Key>
@@ -13,6 +22,7 @@
     </Key>
     <Property Name="book_order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="cus_id" Type="Int32" Nullable="false" />
+    <Property Name="book_status_code" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
     <Property Name="book_order_total" Type="Single" Nullable="false" />
     <Property Name="book_order_date" Type="DateTime" Nullable="false" />
   </EntityType>
@@ -33,32 +43,32 @@
     <Property Name="book_product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="book_type_id" Type="Int32" Nullable="false" />
     <Property Name="book_category_id" Type="Int32" Nullable="false" />
-    <Property Name="book_product_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="book_product_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="book_product_price" Type="Single" Nullable="false" />
     <Property Name="book_product_qty" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="book_status">
+    <Key>
+      <PropertyRef Name="book_status_id" />
+    </Key>
+    <Property Name="book_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="book_status_code" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="book_status_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="book_type">
     <Key>
       <PropertyRef Name="book_type_id" />
     </Key>
     <Property Name="book_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="book_type_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="book_type_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="customer">
     <Key>
       <PropertyRef Name="cus_id" />
     </Key>
     <Property Name="cus_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cus_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cus_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="cus_age" Type="Int32" Nullable="false" />
-    <Property Name="cus_address" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cus_address" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityContainer Name="mvc_projectEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="book_category" EntityType="Self.book_category" />
-    <EntitySet Name="book_order" EntityType="Self.book_order" />
-    <EntitySet Name="book_order_detail" EntityType="Self.book_order_detail" />
-    <EntitySet Name="book_product" EntityType="Self.book_product" />
-    <EntitySet Name="book_type" EntityType="Self.book_type" />
-    <EntitySet Name="customer" EntityType="Self.customer" />
-  </EntityContainer>
 </Schema>
