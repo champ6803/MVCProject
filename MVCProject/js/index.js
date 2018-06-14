@@ -5,11 +5,9 @@ $(function () {
     getBookProduct()
 
     $('#table').on('click-row.bs.table', function (row, $element, field) {
-        var ids = $('#table').bootstrapTable('getSelections');
-        $.each(ids, function (key, val) {
-            $('#productQty').modal('show');
-            getQuantity(ids);
-        });      
+        $('#productQty').modal('show');
+        //getQuantity($element);
+        el = $element;
     });
 
     $('#productQty').on('hidden.bs.modal', function () {
@@ -21,22 +19,19 @@ $(function () {
 });
 
 function getQuantity() {
-    var getQty = 0;
-    var result;
-    var qty = $('#qty').val();
-    var ids = $('#table').bootstrapTable('getSelections');
-    $.each(ids, function (key, val) {        
-        getQty = this.book_product_qty;
-    });
-    //alert("getQty: " + getQty);
-    //alert("qty: " + qty);
-    if (qty > getQty) {
-        alert('please input agin !');
-    }
-    if (qty <= getQty && qty != 0) {
-        book_product_qty = getQty - qty;
-        $('#productQty').modal('hide');
-        alert('buy ' + '\n qty in stock: ' + book_product_qty);
+    if (el) {
+        var qty = $('#qty').val();
+        var getQty = el.book_product_qty;
+        if (qty) {
+            if (parseInt(qty) > parseInt(getQty)) {
+                alert('please input agin !');
+            }
+            if (qty <= getQty && qty != 0) {
+                book_product_qty = getQty - qty;
+                $('#productQty').modal('hide');
+                alert('buy ' + '\n qty in stock: ' + book_product_qty);
+            }
+        }  
     }
 }
 function getBookProduct() {
@@ -183,10 +178,10 @@ function initTableBootstrap() {
             field: 'book_product_qty',
             title: 'Book Product Quantity'
         }, {
-            field: 'book_type_id',
+            field: 'book_type_name',
             title: 'Book Product Type'
         }, {
-            field: 'book_category_id',
+            field: 'book_category_name',
             title: 'Book Product Category'
         }]
     });

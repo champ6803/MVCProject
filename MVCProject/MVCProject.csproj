@@ -211,6 +211,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\BookCategoryController.cs" />
+    <Compile Include="Controllers\BookCateTypeController.cs" />
     <Compile Include="Controllers\BookProductController.cs" />
     <Compile Include="Controllers\BookTypeController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -255,11 +256,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\BookCategoryHelper.cs" />
+    <Compile Include="Helper\BookCateTypeHelper.cs" />
     <Compile Include="Helper\BookProductHelper.cs" />
     <Compile Include="Helper\BookTypeHelper.cs" />
     <Compile Include="Helper\CustomerHelper.cs" />
     <Compile Include="Helper\HomeHelper.cs" />
     <Compile Include="Libraries\BookCategoryLibrary.cs" />
+    <Compile Include="Libraries\BookCateTypeLibrary.cs" />
     <Compile Include="Libraries\BookProductLibrary.cs" />
     <Compile Include="Libraries\BookTypeLibrary.cs" />
     <Compile Include="Libraries\CustomerLibrary.cs" />
@@ -290,6 +293,7 @@
     <Content Include="Global.asax" />
     <Content Include="css\style.css" />
     <Content Include="js\BookCategory\BookCategory.js" />
+    <Content Include="js\BookCateType\BookCateType.js" />
     <Content Include="js\BookProduct\BookProduct.js" />
     <Content Include="js\BookType.js" />
     <Content Include="js\Customer\Customer.js" />
@@ -340,6 +344,8 @@
     <Content Include="Views\BookType\BookType.cshtml" />
     <Content Include="Views\BookProduct\BookProduct.cshtml" />
     <Content Include="Views\Customer\Customer.cshtml" />
+    <Content Include="Views\BookCateType\BookCateType.cshtml" />
+    <Content Include="Views\Shared\_Modal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

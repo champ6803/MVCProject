@@ -4,7 +4,7 @@
 }
 
 <h2>BookProduct</h2>
-<div class="panel panel-default">
+<div class="panel panel-info">
     <div class="panel-heading">Add Book Product</div>
     <div class="panel-body">
         <div class="row">
@@ -29,17 +29,20 @@
                 </div>
                 <div class="form-group row">
                     <label class="col-xs-3 control-label">Product Type</label>
-                    <select id="select_product_type" class="col-xs-6 form-control">
-                        <option>Default select</option>
-
-                    </select>
+                    <div class="col-xs-6">
+                        <select id="select_product_type" class="form-control">
+                            <option>Default select</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-xs-3 control-label">Product Category</label>
-                    <select id="select_product_cate" class="col-xs-6 form-control">
-                        <option>Default select</option>
-                    </select>
-                </div>                
+                    <div class="col-xs-6">
+                        <select id="select_product_cate" class="form-control">
+                            <option>Default select</option>
+                        </select>
+                    </div>      
+                </div>          
             </div>
         </div>
         <button onclick="addBookProduct()" class="btn btn-primary">Add</button>
@@ -56,6 +59,9 @@
         <button class="btn btn-danger" id="remove">Delete</button>
     </div>
 </div>
+
+@Html.Partial("_Modal");
+
 @section scripts{
 
     <script src="@Url.Content("~/js/BookProduct/BookProduct.js")"></script>

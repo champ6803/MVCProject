@@ -15,7 +15,7 @@ function getBookCategory()
     $.ajax({
         type: 'GET',
         url: base_path + 'BookCategory/GetBookCategoryList',
-        async: false,
+        async: false,  
         success: function (data)
         {
             if (data) {

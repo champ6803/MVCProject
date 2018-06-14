@@ -52,7 +52,41 @@ namespace MVCProject.Controllers
             }
         }
 
-
+        public ActionResult UpdateBookProduct(BookProductModel bookProd)
+        {
+            try
+            {
+                bool updated = bookProductHelp.UpdateProduct(bookProd);
+                if (updated)
+                {
+                    var bookProduct = bookProductHelp;
+                    return Json(bookProduct, JsonRequestBehavior.AllowGet);
+                }
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public ActionResult DeleteBookProduct(List<BookProductModel> bookProductList)
+        {
+            try
+            {
+                bool del = bookProductHelp.DeleteBookProduct(bookProductList);
+                if (del)
+                {
+                    var bookProdList = bookProductHelp.GetBookProductList();
+                    return Json(true, JsonRequestBehavior.AllowGet);
+                }
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+        }
+        
     }    
     
 }

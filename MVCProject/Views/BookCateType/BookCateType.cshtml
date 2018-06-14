@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "BookCateType";
+}
+
+<h2>BookCateType</h2>
+<div class="panel panel-info">
+    <div class="panel-heading">Add book cate</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group row">
+                    <label class="control-label col-xs-3">Category</label>
+                    <input type="text" class="form-control col-xs-6" id="book_category_name" placeholder="category" />
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" onclick="addBookCate()">Add</button>
+     </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">Add book type</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group row">
+                    <label class="control-label col-xs-3">Name</label>
+                    <input type="text" class="form-control col-xs-6" id="book_type_name" placeholder="type" />
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" onclick="addBookType()">Add</button>
+    </div>
+</div>
+
+<div class="row" style="padding-top: 20px;">    
+    <div class="col-xs-12">
+        <div>
+            <h2>Book category</h2>
+            <table id="tableCate"></table>
+        </div>
+        <button class="btn btn-danger" id="removeCate" style="margin-top:10px">Delete</button>
+    </div>
+</div>
+
+<div class="row" style="padding-top: 20px;">    
+    <div class="col-xs-12">
+        <div>
+            <h2>Book type</h2>
+            <table id="tableType"></table>
+        </div>
+        <button class="btn btn-danger" id="removeType" style="margin-top:10px">Delete</button>
+    </div>
+</div>
+
+@Html.Partial("_Modal");
+
+@section scripts{
+    <script src="@Url.Content("~/js/BookCateType/BookCateType.js")"></script>
+}

@@ -19,6 +19,14 @@ namespace MVCProject.Helper
         {
             return new BookProductLibrary().AddBookProduct(bookProd);
         }
+        public bool UpdateProduct(BookProductModel bookProd)
+        {
+            return new BookProductLibrary().UpdateBookProduct(bookProd);
+        }
 
+        public bool DeleteBookProduct(List<BookProductModel> bookproduct)
+        {
+            return new BookProductLibrary().DeleteBookProductList(bookproduct);
+        }
     }
 }

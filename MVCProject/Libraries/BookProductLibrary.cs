@@ -85,6 +85,7 @@ namespace MVCProject.Libraries
         {
             try
             {
+                /*
                 List<BookProductModel> bookProductModelList = new List<BookProductModel>();
                 List<book_product> bookProductList = IQueryable().ToList();
                 foreach (var bookProduct in bookProductList)
@@ -102,6 +103,24 @@ namespace MVCProject.Libraries
                 }
 
                 return bookProductModelList;
+                */
+                //JOIN
+                List<BookProductModel> q = (from bpd in dbh.book_product
+                                            join bc in dbh.book_category on bpd.book_category_id equals bc.book_category_id
+                                            join bt in dbh.book_type on bpd.book_type_id equals bt.book_type_id
+                                            orderby bpd.book_product_id
+                                            select new BookProductModel
+                                            {
+                                                book_product_id = bpd.book_product_id,
+                                                book_product_name = bpd.book_product_name,
+                                                book_category_id = bpd.book_category_id,
+                                                book_category_name = bc.book_category_name,
+                                                book_type_id = bpd.book_type_id,
+                                                book_type_name = bt.book_type_name,
+                                                book_product_price = bpd.book_product_price,
+                                                book_product_qty = bpd.book_product_qty
+                                            }).ToList();
+                return q;
             }
             catch (Exception ex)
             {
@@ -171,6 +190,11 @@ namespace MVCProject.Libraries
                     book_product _obj = Mapping(m);
                     dbh.book_product.Add(_obj);
                     dbh.SaveChanges();
+                    // book_product bp = IQueryable().FirstOrDefault(o => o.book_product_id == m.book_product_id);
+
+                    // bp = Mapping(m);
+
+                    //dbh.SaveChanges();
                     return true;
                 }
                 return false;
@@ -180,7 +204,44 @@ namespace MVCProject.Libraries
                 throw ex;
             }
         }
-
-       
+        public bool UpdateBookProduct(BookProductModel m)
+        {
+            try
+            {               
+                book_product bp = IQueryable().FirstOrDefault(o => o.book_product_id == m.book_product_id);
+                bp.book_product_name = m.book_product_name;
+                bp.book_product_price = m.book_product_price;
+                dbh.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }    
+        
+        public bool DeleteBookProductList(List<BookProductModel> bookproduct)
+        {
+            try
+            {
+                
+                if (bookproduct != null && bookproduct.Count > 0)
+                {
+                    List<book_product> bpList = Mapping(bookproduct);
+                    foreach (book_product bp in bpList)
+                    {
+                        dbh.book_product.Attach(bp);
+                        dbh.book_product.Remove(bp);
+                        dbh.SaveChanges();
+                    }
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }   
     }    
 }
