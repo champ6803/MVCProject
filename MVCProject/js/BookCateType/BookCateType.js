@@ -3,6 +3,7 @@
     initTableBootstrapType();
     getBookCate();
     getBookType();
+    
     $('#removeCate').click(function () {
         var idSelect = $('#tableCate').bootstrapTable('getSelections');
         $.each(idSelect, function (key, val) {
