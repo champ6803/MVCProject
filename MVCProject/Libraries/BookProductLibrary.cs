@@ -116,7 +116,7 @@ namespace MVCProject.Libraries
                                                 book_category_id = bpd.book_category_id,
                                                 book_category_name = bc.book_category_name,
                                                 book_type_id = bpd.book_type_id,
-                                                book_type_name = bt.book_type_name,
+                                                book_type_name = bt.book_type_name, 
                                                 book_product_price = bpd.book_product_price,
                                                 book_product_qty = bpd.book_product_qty
                                             }).ToList();
