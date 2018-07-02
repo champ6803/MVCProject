@@ -19,6 +19,10 @@
                         <label class="control-label">Price</label>
                         <input type="text" class="form-control" id="price" />
                     </div>
+                    <div class="form-group">
+                        <label class="control-label">Price</label>
+                        <input type="text" class="form-control" id="qty" />
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -74,3 +78,54 @@
         </div>
     </div>
 </div>
+
+<!-- Modal qty-->
+<div class="modal" id="modalQty">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Edit: </div>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="control-label">Quantity</label>
+                    <div>
+                        <input type="text" class="form-control" id="qtyOrder" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">close</button>
+                <button class="btn btn-primary" onclick="checkQty()">ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal อันเก่า-->
+<div class="modal fade" id="productQty" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Enter quantity</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="qty" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="getQuantity()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>          
+
+<!--Modal buy success-->   
+  

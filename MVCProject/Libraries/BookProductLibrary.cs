@@ -116,7 +116,7 @@ namespace MVCProject.Libraries
                                                 book_category_id = bpd.book_category_id,
                                                 book_category_name = bc.book_category_name,
                                                 book_type_id = bpd.book_type_id,
-                                                book_type_name = bt.book_type_name, 
+                                                book_type_name = bt.book_type_name,
                                                 book_product_price = bpd.book_product_price,
                                                 book_product_qty = bpd.book_product_qty
                                             }).ToList();
@@ -199,7 +199,7 @@ namespace MVCProject.Libraries
                 }
                 return false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -207,10 +207,11 @@ namespace MVCProject.Libraries
         public bool UpdateBookProduct(BookProductModel m)
         {
             try
-            {               
+            {
                 book_product bp = IQueryable().FirstOrDefault(o => o.book_product_id == m.book_product_id);
                 bp.book_product_name = m.book_product_name;
                 bp.book_product_price = m.book_product_price;
+                bp.book_product_qty = m.book_product_qty;
                 dbh.SaveChanges();
                 return true;
             }
@@ -218,13 +219,13 @@ namespace MVCProject.Libraries
             {
                 throw ex;
             }
-        }    
-        
+        }
+
         public bool DeleteBookProductList(List<BookProductModel> bookproduct)
         {
             try
             {
-                
+
                 if (bookproduct != null && bookproduct.Count > 0)
                 {
                     List<book_product> bpList = Mapping(bookproduct);
@@ -242,6 +243,45 @@ namespace MVCProject.Libraries
             {
                 throw ex;
             }
-        }   
+        }
+        public List<BookProductModel> GetNameBook()
+        {
+            try
+            {
+                List<book_product> name = IQueryable().Where(o => o.book_product_name.Contains("ลัดฟ้ามาหารัก")).ToList();
+                List<BookProductModel> list = Mapping(name);
+                return list;
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        
+        public bool UpdateStockBookProduct(List<BookProductModel> newQty)
+        {
+            try
+            {
+                if(newQty != null && newQty.Count > 0)
+                {
+                    List<book_product> qList = new List<book_product>();
+                    book_product bpDB = new book_product();
+                    foreach(BookProductModel qty in newQty)
+                    {
+                        book_product q = new book_product();
+                        q.book_product_qty = qty.book_product_qty;
+                        dbh.SaveChanges();
+                    }
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }    
 }

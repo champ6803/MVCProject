@@ -4,10 +4,13 @@ $(function () {
     getBookCategory();
     getBookType();
     getBookProduct()
+    getNameBook();
 
     $('#add').click(function () {
       
     });
+    
+
     $('#remove').click(function () {
         var ids = $('#table').bootstrapTable('getSelections');
         $.each(ids, function (key, val) {
@@ -21,10 +24,13 @@ $(function () {
         //$('.modal-title').html('<span style="font-size:24px;color:#0A8DAB">Book_product_id: ' + el.book_product_id + '</span>');
        $('#name').val(el.book_product_name);
        $('#price').val(el.book_product_price);
+       $('#qty').val(el.book_product_qty);
        $('#editBookProduct').modal('show');
         
-    });    
+    });
+   
 });
+
 
 
 function updateBookProduct() {
@@ -33,7 +39,7 @@ function updateBookProduct() {
         var book_product_id = el.book_product_id;
         var book_product_name = $('#name').val();
         var book_product_price = $('#price').val();
-        var book_product_qty = el.book_product_qty;
+        var book_product_qty = $('#qty').val();
         var book_type_id = el.book_type_id;
         var book_category_id = el.book_category_id;
         $("name").val(book_product_name);
@@ -77,6 +83,28 @@ function getBookProduct() {
         error: function (data) {
             alert('error');
         }
+    });
+}
+
+function getNameBook() {
+    $.ajax({
+        type: 'GET',
+        url: base_path + 'BookProduct/GetnameBook',
+        async: false,
+        success: function (data) {
+            if (data) {
+               nameBook($('#nameBook'),data);
+            }
+        },
+        error: function (data) {
+            alert('error');
+        }
+    });
+}
+
+function nameBook(selector, options) {
+    $.each(options, function (i, p) {
+        selector.append($('#nameBook').val(this.book_product_id).html(this.book_product_name));
     });
 }
 

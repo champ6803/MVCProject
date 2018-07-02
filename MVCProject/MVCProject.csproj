@@ -212,10 +212,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\BookCategoryController.cs" />
     <Compile Include="Controllers\BookCateTypeController.cs" />
+    <Compile Include="Controllers\BookOrderController.cs" />
     <Compile Include="Controllers\BookProductController.cs" />
     <Compile Include="Controllers\BookTypeController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Entities\book_category.cs">
       <DependentUpon>mvc_projectEntities.tt</DependentUpon>
     </Compile>
@@ -257,17 +259,23 @@
     </Compile>
     <Compile Include="Helper\BookCategoryHelper.cs" />
     <Compile Include="Helper\BookCateTypeHelper.cs" />
+    <Compile Include="Helper\BookOrderHelper.cs" />
     <Compile Include="Helper\BookProductHelper.cs" />
     <Compile Include="Helper\BookTypeHelper.cs" />
     <Compile Include="Helper\CustomerHelper.cs" />
     <Compile Include="Helper\HomeHelper.cs" />
+    <Compile Include="Helper\TestHelper.cs" />
     <Compile Include="Libraries\BookCategoryLibrary.cs" />
     <Compile Include="Libraries\BookCateTypeLibrary.cs" />
+    <Compile Include="Libraries\BookOrderLibrary.cs" />
     <Compile Include="Libraries\BookProductLibrary.cs" />
     <Compile Include="Libraries\BookTypeLibrary.cs" />
     <Compile Include="Libraries\CustomerLibrary.cs" />
     <Compile Include="Libraries\HomeLibrary.cs" />
+    <Compile Include="Libraries\TestLibrary.cs" />
     <Compile Include="Models\BookCategoryModel.cs" />
+    <Compile Include="Models\BookOrderDetailModel.cs" />
+    <Compile Include="Models\BookOrderModel.cs" />
     <Compile Include="Models\BookProductModel.cs" />
     <Compile Include="Models\BookTypeModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
@@ -298,6 +306,7 @@
     <Content Include="js\BookType.js" />
     <Content Include="js\Customer\Customer.js" />
     <Content Include="js\index.js" />
+    <Content Include="js\Test\Test.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap-table-th-TH.js" />
@@ -346,10 +355,12 @@
     <Content Include="Views\Customer\Customer.cshtml" />
     <Content Include="Views\BookCateType\BookCateType.cshtml" />
     <Content Include="Views\Shared\_Modal.cshtml" />
+    <Content Include="Views\Test\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
+    <Folder Include="Views\BookOrder\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

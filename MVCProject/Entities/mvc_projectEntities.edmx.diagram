@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="mvc_projectModel.book_order" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="mvc_projectModel.book_order_detail" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="mvc_projectModel.book_product" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="mvc_projectModel.book_status" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="mvc_projectModel.book_status" Width="1.5" PointX="4.75" PointY="0.875" />
         <EntityTypeShape EntityType="mvc_projectModel.book_type" Width="1.5" PointX="4.75" PointY="3.75" />
         <EntityTypeShape EntityType="mvc_projectModel.customer" Width="1.5" PointX="6.75" PointY="0.75" />
       </Diagram>
